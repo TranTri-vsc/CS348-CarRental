@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="app.css">
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+  <div class="myframe">
+    <h1>Customer Registration Form</h1>
+    <p>Please enter your information</p>
+
+
+    <form class = "myform" action="/Save" method="post">
+	
+		<div class="container">
+	
+			<label for="First"><b>First Name</b></label> 
+			<input name="First" placeholder = "Enter First Name" type="text" required /> 
+			
+			<label for="Last"><b>Last Name </b></label>
+			<input name="Last" placeholder = "Enter Last Name"type="text" required /> 
+			
+			<label for="Address"> <b>Address</b></label> 
+			<input name="Address" placeholder = "Enter Address" type="text" required /> 
+			
+			<label for="City"> <b>City</b></label>
+			<input name="City" placeholder = "Enter City Name"type="text" required /> 
+			
+			<label for="State"> <b>State</b></label> 
+			<input name="State" placeholder = "Enter State Name"type="text" required /> 
+			
+			<label for="Zip"> <b>Zipcode </b></label> 
+			<input name="Zip" placeholder = "Enter Zip code"type="text" required />
+			
+			<label for="License"> <b>Drivers License </b></label> 
+			<input name="License" placeholder = "Enter Driver's License"type="text" required />
+			
+			<label for="Email"> <b>email </b></label>
+			<input name="Email" placeholder = "Enter email"type="text" required /> 
+			
+			<label for="User"> <b>User Name </b></label>
+			<input name="User" placeholder = "Enter User Name"type="text" required /> 
+			
+			<label for="Password"> <b><label for="last"> Password </b></label>
+			<input name="Password" placeholder = "Enter Password"type="text" required /> 
+			
+			<label for="Phone"> <b>Phone Number </b></label>
+			<input name="Phone" placeholder = "Enter Phone number"type="text" required />
+			
+			<label for="Insurance"> <b>Insurance </b></label> 
+			<input name="Insurance" placeholder = "Has Insurance"type="text" required /> 
+			
+			<button type="submit" >Save</button>
+			<button type="submit" class="regcancelbtn" formaction="/cancel" formnovalidate >Cancel</button>
+		
+		</div>
+		</form>
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
