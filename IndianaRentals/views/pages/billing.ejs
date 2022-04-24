@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="app.css">
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<body style="background-color: #f1f1f1">
+<main>
+  <div class="myframe">
+        <div class="right-side-content">
+            <div class="logocontainer">
+                 <img src="logo.png" alt="Logo" class="logo">
+            </div>
+            <div class="topnav">
+                 <a href="/search">Search</a>
+                 <a class="active" href="/billing">Billing</a>
+                 <a href="/upcoming">Upcoming Trips</a>
+            </div>
+        </div>
+        <div class="right-side-content">
+            <div class ="header">
+                <h1>Billing</h1>
+            </div>
+            <form class = "dateForm" action="/filterByDate" method="post">
+                 Start Date: <input name="startDate" type="date" />  to
+                 End Date : <input name="endDate" type="date" />
+                 <button type="submit">Filter Billing</button>
+            </form>
+        </div>
+        <table class="billing-table">
+          <tr>
+            <th>ID</th>
+            <th>Pickup Location</th>
+            <th>Pickup Date/Time</th>
+            <th>Dropoff Location</th>
+            <th>Dropoff Date/Time</th>
+            <th>Rental Cost</th>
+          </tr>
+          <% for(var i=0; i < reservations.length; i++) {%>
+
+          <tr>
+            <td><%=reservations[i].res_id%></td>
+            <td><%=reservations[i].pickup_loc%></td>
+            <td><%=reservations[i].pickup_dt%></td>
+            <td><%=reservations[i].dropoff_loc%></td>
+            <td><%=reservations[i].dropoff_dt%></td>
+            <td><%=reservations[i].cost%></td>
+          </tr>
+
+          <% } %>
+        </table>
+
+  </div>
+</main>
+</body>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

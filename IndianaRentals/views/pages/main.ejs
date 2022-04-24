@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="app.css">
   <%- include('../partials/head'); %>
 </head>
-<body class="container">
+<body class="container" style="background-color: #f1f1f1">
 
 <header>
   <%- include('../partials/header'); %>
@@ -12,10 +13,16 @@
 <main>
   <div class="myframe">
 	<form action="/login" method="post">
-		<div class="imgcontainer">
-			<img src="logo.png" alt="Logo" class="logo">
-		</div>
-
+	    <div class="right-side-content">
+	        <div class="logocontainer">
+                <img src="logo.png" alt="Logo" class="logo">
+            </div>
+            <div class="topnav">
+                      <a class="active" href="/search">Search</a>
+                      <a href="/billing">Billing</a>
+                      <a href="/upcoming">Upcoming Trips</a>
+            </div>
+        </div>
 	</form>
 
   </div>
