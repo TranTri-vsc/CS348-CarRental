@@ -1,6 +1,11 @@
 /* Bordered form */
+
 form {
   border: 3px solid #f1f1f1;
+}
+
+body{
+  background-color: #f1f1f1
 }
 
 /* Full-width inputs */
@@ -15,13 +20,18 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-  background-color: #04AA6D;
+  background-color: #478CCD;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+}
+
+.icon {
+  background-color: transparent !important;
+    padding: 2px !important;
+    text-align: center;
 }
 
 /* Add a hover effect for buttons */
@@ -31,6 +41,7 @@ button:hover {
 
 /* Extra style for the cancel button (red) */
 .cancelbtn {
+  display: inline;
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
@@ -55,8 +66,16 @@ img.logo {
 
 /* Add padding to containers */
 .container {
+  overflow-y: auto;
   padding: 16px;
 }
+
+.editcontainer {
+  background-color: white;
+  overflow-y: auto;
+  padding: 16px;
+}
+
 
 /* The "Forgot password" text */
 span.psw {
@@ -73,6 +92,13 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+  #editsavebtn{
+    width: 100%;
+  }
+  #editcancelbtn{
+    width: 100%;
+    display: block
+  }
 }
 
 .right-side-content {
@@ -80,6 +106,7 @@ span.psw {
   align-items: center;
   flex-flow: row wrap;
 }
+
 
 .topnav a {
   float: center;
@@ -92,7 +119,7 @@ span.psw {
 
 .topnav a.active {
   text-decoration: underline;
-  color: #478cca;
+  color: #478CCD;
 }
 
 .logocontainer {
@@ -115,7 +142,7 @@ span.psw {
 .dateForm button {
   text-align: center;
   padding: 10px 20px;
-  background-color: #478cca;;
+  background-color: #478CCD;;
   border: 1px solid #ddd;
   color: white;
   width: 25%;
@@ -126,12 +153,54 @@ span.psw {
 }
 
 .billing-table {
-    vertical-padding: 10px;
+    vertical-align: 10px;
 }
 
 .billing-table tr, td {
-    border: 3px solid #f1f1f1;
+    border: 3px solid #F6F7F9;
     background-color: white;
     padding: 15px;
     text-align: center;
+}
+#tripbox {
+  height: auto;
+  margin-top: 30px;
+  
+}
+#tripTitleBox {
+  color: white;
+  height: max-content;
+  background-color: #478CCD;
+}
+#tripDetailBox {
+  background-color: white;
+}
+.whiteTitle{
+  color: white
+}
+
+#deleteTrip, #editTrip {
+  margin: 0;
+  display: inline;
+  border: none !important;
+}
+
+#editsavebtn {
+  background-color: #478CCD;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  min-width: 45%;
+}
+
+#editcancelbtn {
+  display: inline;
+  float: right;
+  background-color: white;
+  color: black;
+  padding: 14px 20px;
+  border: 0.5px solid black;
+  cursor: pointer;
+  min-width: 45%;
 }
