@@ -6,7 +6,7 @@ var customer_id = -1;
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "#Sjh20021",
+  password: "",
   database: "rental_car"
 });
 
