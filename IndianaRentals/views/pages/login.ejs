@@ -23,16 +23,21 @@
 
 			<label for="psw"><b>Password</b></label>
 			<input type="password" placeholder="Enter Password" name="psw" required>
-
-			<button type="submit">Login</button>
 			<label>
 				<input type="checkbox" checked="checked" name="remember"> Remember me
 			</label>
+			<div style="text-align: center; width: 100%;">
+			<button type="submit" style="width: 100%; ">Login</button>
+			</div>
+			
 		</div>
 
-		<div class="container" style="background-color:#f1f1f1">
-			<button type="submit" class="cancelbtn" formaction="/register" formnovalidate >Register</button>
-			<span class="psw"><a href="#">Forgot password?</a></span>
+		<div class="container" style="text-align: center; margin-top: -20px">
+			<p> Don't have an account?
+			<button type="submit" 
+			style="background: transparent; color: black; text-decoration: underline; font-weight: bold; padding-left: 2px;" 
+			formaction="/register" formnovalidate >Register</button>
+		</p>
 		</div>
 	</form>
 
