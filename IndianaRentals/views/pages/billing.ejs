@@ -4,25 +4,16 @@
   <link rel="stylesheet" href="app.css">
   <%- include('../partials/head'); %>
 </head>
-<body class="container">
+<body>
 
 <header>
-  <%- include('../partials/header'); %>
+  <%- include('../partials/headerMain', {active:"Billing"}); %>
 </header>
 
-<body style="background-color: #F6F7F9">
+<div class="fullbody">
+<div class="container" >
 <main>
   <div class="myframe">
-        <div class="right-side-content">
-            <div class="logocontainer">
-                <a href='/'> <img src="logo.png" alt="Logo" class="logo"></a>
-            </div>
-            <div class="topnav">
-                 <a href="/search">Search</a>
-                 <a class="active" href="/billing">Billing</a>
-                 <a href="/upcoming">Upcoming Trips</a>
-            </div>
-        </div>
         <div class="right-side-content">
             <div class ="header">
                 <h1>Billing</h1>
@@ -58,7 +49,8 @@
 
   </div>
 </main>
-</body>
+</div>
+</div>
 
 <footer>
   <%- include('../partials/footer'); %>

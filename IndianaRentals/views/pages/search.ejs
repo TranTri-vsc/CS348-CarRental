@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="app.css">
+  <%- include('../partials/head'); %>
+</head>
+<body>
+
+<header>
+  <%- include('../partials/headerMain', {active:"Search"}); %>
+</header>
+<div class="fullbody">
+<div class="container" >
+<main>
+
+<!--<form class="myform" action="/" method="post"> -->
+<div class="row">
+  <div class="col-sm-4">
+    <div class="search">
+      <h1>Cars</h1>
+        <form class = "" action="/Search" method="post">
+	
+		<div class="container">
+	
+			<input type="text" id="search" name="search" value="<%=gbl.search%>"  placeholder="Search Nearby Zipcode"   /> 
+			<button type="submit" formaction="/Search">Search</button>
+			<br>
+			<label for="Location"><b>Location</b></label> 
+			<br >
+           <select name="pickup" id="pickup">
+		       <% if ( gbl.pickup == undefined ) { %>
+                  <option value="-1" selected disabled hidden>Nearby Pickup Location</option>
+			   <%}%>
+		   	   <% pickups.forEach(function(location) { %>
+			      <% if ( location.Location_id == gbl.pickup ) { %>
+                     <option value=<%=location.Location_id%> selected="selected"> <%=location.location_description%></option>
+				  <%}%>
+			      <% if ( location.Location_id != gbl.pickup ) { %>
+                     <option value=<%=location.Location_id%>> <%=location.location_description%></option>
+				  <%}%>
+		       <% })%>
+            </select>	  
+			<br />
+           <select name="dropoff" id="dropoff">
+		       <% if ( gbl.dropoff == undefined ) { %>
+                  <option value="-1" selected disabled hidden>Nearby Dropoff Location</option>
+			   <%}%>
+		   	   <% dropoffs.forEach(function(location) { %>
+			      <% if ( location.Location_id == gbl.dropoff ) { %>
+                     <option value=<%=location.Location_id%> selected="selected"> <%=location.location_description%></option>
+				  <%}%>
+			      <% if ( location.Location_id != gbl.dropoff ) { %>
+                     <option value=<%=location.Location_id%>> <%=location.location_description%></option>
+				  <%}%>
+		       <% })%>
+            </select>	  
+
+            <br />
+			<label for="Pickup"><b>Duration</b></label> 
+			<br />
+		    <input name="pickuptime" id="pickuptime" value="<%-gbl.pickuptime%>" type="datetime-local"  /> 
+			<br />
+		    <input name="dropofftime" id="dropofftime" value = "<%-gbl.dropofftime%>" type="datetime-local"  /> 
+            <br />
+			<label for="Filter"><b>Filter</b></label> 
+			<br />
+           <select name="cartype" id="cartype">
+		       <% if ( gbl.cartype == undefined ) { %>
+                  <option value="-1" selected disabled hidden>Select car type</option>
+			   <%}%>
+		   	   <% cars.forEach(function(car) { %>
+			      <% if ( car.Car_type_id == gbl.cartype ) { %>
+                     <option value="<%=car.Car_type_id%>" selected="selected"> <%=car.Car_type%></option>
+				  <%}%>
+			      <% if ( car.Car_type_id != gbl.cartype) { %>
+                     <option value="<%=car.Car_type_id%>"> <%=car.Car_type%></option>
+				  <%}%>
+		       <%})%>
+            </select>	  
+
+           <br />
+           <select name="price" id="price">
+		       <% if ( gbl.price == undefined ) { %>
+                  <option value="-1" selected disabled hidden>Select price per hour</option>
+			   <%}%>
+		   	   <% prices.forEach(function(price) { %>
+			      <% if ( price.id == gbl.price ) { %>
+                     <option value="<%=price.id%>" selected="selected"> <%=price.name%></option>
+				  <%}%>
+			      <% if ( price.id != gbl.price) { %>
+                     <option value="<%=price.id%>"> <%=price.name%></option>
+				  <%}%>
+		       <% })%>
+            </select>	  
+        </div>
+		<button class="cancelbtn" type="submit" formaction="\logout">Logout</button>
+
+    </form>	
+
+
+	  
+    </div>
+  </div>
+
+  <!--<div class="col-sm-8"> -->
+  <div class="col-sm-8">
+    <div class="results">
+	  <form action = "/reserve" method="post">
+	    <input id="pickup_" name="pickup_" type="hidden" />
+	    <input id="pickuptime_" name="pickuptime_" type="hidden" />
+	    <input id="dropoff_" name="dropoff_" type="hidden" />
+	    <input id="dropofftime_" name="dropofftime_" type="hidden" />
+	    <table classs='repos'>
+		  <tr>
+		    <th>Car Description</th>
+		    <th>Color</th>
+		    <th>Price per hour</th>
+			<th>Reserve</th>
+		  </tr>
+		  <%var x = 1%>
+		  <% results.forEach(function(result) { %>
+		    <tr>
+			   <td> <%=result.Make_Year+ " " + result.Make + " " + result.Model%> </td>
+			   <td> <%=result.Color%> </td>
+			   <td> <%=result.Rental_price_per_hour%> </td>
+			   <td> <button type="submit" formaction="/reserve<%=x++%>" onclick="clicked()">RESERVE</button> </td>
+			</tr>
+		  <% })%>
+		</table>	
+	  </form>
+	  <script>
+	    function clicked() {
+		   
+		   document.getElementById('dropoff_').value= document.getElementById('dropoff').value;
+		   document.getElementById('dropofftime_').value= document.getElementById('dropofftime').value;
+		   document.getElementById('pickup_').value= document.getElementById('pickup').value;
+		   document.getElementById('pickuptime_').value= document.getElementById('pickuptime').value;
+		}
+		</script>
+    </div>
+  </div>
+		<% if ( gbl.status != undefined ) {%>
+		<div class="status">
+		  <h2 style="text-align: center;"><%=gbl.status%></h2>
+		</div>
+		<%}%>
+
+</div>
+<!--<form> -->
+</main>
+</div>
+<footer>
+	<%- include('../partials/footer'); %>
+  </footer>
+</div>
+
+
+</body>
+</html>

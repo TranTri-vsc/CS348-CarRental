@@ -3,39 +3,29 @@
 <head>
   <link rel="stylesheet" href="app.css">
   <%- include('../partials/head'); %>
-  
-    
 </head>
-<body class="container">
+<body>
 
-<header>
-  <%- include('../partials/header'); %>
-</header>
-<body style="background-color: #F6F7F9">
-<main>
+  <header>
+    <%- include('../partials/headerMain', {active:"Upcoming"}); %>
+  </header>
+  <div class="fullbody">
+    <div class="container" >
+      <main>
     
-  <div class="myframe">
-    <div class="right-side-content">
-      <div class="logocontainer">
-        <a href='/'> <img src="logo.png" alt="Logo" class="logo"></a>
-      </div>
-      <div class="topnav">
-           <a href="/search">Search</a>
-           <a href="/billing">Billing</a>
-           <a class="active" href="/upcoming">Upcoming Trips</a>
-      </div>
-  </div>
-    <h1>Upcoming Trips</h1>
-    <% if(trips == "not logged in") { %>
-        <p style="padding-top: 16px; text-align: center">Please log in to see upcoming trips.</p>
-    <%} else if(trips == "no upcoming") { %>
-        <p style="padding-top: 16px; text-align: center">No upcoming trips.</p>
-    <% } else { %>
-    <% trips.forEach(function(trip){ %>
-        <div id="tripbox">
-            <div id="tripTitleBox" class="container">
+        <div class ="header">
+          <h1>Upcoming Trips</h1>
+        </div>
+        <% if(trips == "not logged in") { %>
+          <p style="padding-top: 16px; text-align: center">Please log in to see upcoming trips.</p>
+        <%} else if(trips == "no upcoming") { %>
+          <p style="padding-top: 16px; text-align: center">No upcoming trips.</p>
+        <% } else { %>
+          <% trips.forEach(function(trip){ %>
+            <div id="tripbox">
+              <div id="tripTitleBox" class="container">
                 <h4><%= trip.Make + " " + trip.Model + " " + trip.Make_Year%>
-                    <form id="editTrip" action="/edit_trip_form" method="post">
+                    <form class="formnoborder" action="/edit_trip_form" method="post">
                         <input type="hidden" name="reservation_id" value="<%=trip.Reservation_id%>"/>
                         <input type="hidden" name="car_details" value="<%=trip.Make + ' ' + trip.Model + ' ' + trip.Make_Year%>"/>
                         <input type="hidden" name="car_color" value="<%=trip.Color%>"/>
@@ -50,41 +40,39 @@
                         <button class="icon" type="submit" ><img src="edit_button.png"></button>
                     </form> 
   
-                    <form id="deleteTrip" action="/delete_trip" method="post">
-                        <input type="hidden" name="reservation_id" value="<%=trip.Reservation_id%>" />
-                        <button class="icon" type="button" onclick="onClickHandler('d')"><img src="delete_button.png"> </button>
+                    <form class="formnoborder" id="deleteTrip" action="/delete_trip" method="post">
+                        <input type="hidden" id = "delete_res_id" name="reservation_id" value="<%=trip.Reservation_id%>" />
+                        <button class="icon" type="button" onclick="onClickHandler('<%=trip.Reservation_id%>')"><img src="delete_button.png"> </button>
                     </form>
+                    <script>
+                      function onClickHandler(reservation_id){
+                              if(window.confirm("Do you want to delete this trip? The action is irreversible.")){
+                                  document.getElementById('delete_res_id').value = reservation_id;
+                                  document.getElementById("deleteTrip").submit();
+                              } else {
+                              return;
+                              }
+                      }
+                    </script>
                 </h4>
-                    
+              </div>
+              <div id="tripDetailBox" class="container">
+                  <p><strong>Pickup:</strong> <%= trip.pickupDateFormatted%><br>
+                  <strong>Location: </strong><%= trip.pickup_location + " - " + trip.pickupAddress%> </p>
+                  <p><strong>Dropoff:</strong> <%= trip.dropoffDateFormatted%><br>
+                  <strong>Location: </strong><%= trip.dropoff_location + " - " + trip.dropoffAddress%> </p>
+                  <p>Total cost: $<%= trip.Rental_Cost%></p>
+              </div>
             </div>
-            <div id="tripDetailBox" class="container">
-                <p><strong>Pickup:</strong> <%= trip.pickupDateFormatted%><br>
-                <strong>Location: </strong><%= trip.pickup_location + " - " + trip.pickupAddress%> </p>
-                <p><strong>Dropoff:</strong> <%= trip.dropoffDateFormatted%><br>
-                <strong>Location: </strong><%= trip.dropoff_location + " - " + trip.dropoffAddress%> </p>
-                <p>Total cost: $<%= trip.Rental_Cost%></p>
-            </div>
-        </div>
-        <script>
-        function onClickHandler(){
-                if(window.confirm("Do you want to delete this trip? The action is irreversible.")){
-                    document.getElementById("deleteTrip").submit();
-                } else {
-                return;
-                }
-        }
-        </script>
         
+          <% })} %>
 
-    <% })} %>
-
-    
+      </main>
+    </div>
   </div>
-</main>
-</body>
-<footer>
-  <%- include('../partials/footer'); %>
-</footer>
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
 
 </body>
 </html>

@@ -1,0 +1,21 @@
+<nav>
+  <ul class="nav-list">
+    <li>
+      <a href='/'> <img src="logo.png" style="width: 200px;" alt="Logo" class="logo"></a>
+    </li>
+    <li>
+         <a <%if(active=="Search"){%>class="active"<%}%> href="/search">Search</a>
+    </li> 
+    <li >    
+         <a <%if(active=="Billing"){%>class="active"<%}%> href="/billing">Billing</a>
+    </li>
+    <li>
+         <a <%if(active=="Upcoming"){%>class="active"<%}%> href="/upcoming">Upcoming Trips</a>
+    </li>
+    <li>
+      <form class="formnoborder"  method="post">
+        <button type="submit" formaction="/logout">Logout</button>
+      </form>
+    </li>
+  </ul>
+</nav>

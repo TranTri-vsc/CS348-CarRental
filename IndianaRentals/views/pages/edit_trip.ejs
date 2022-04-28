@@ -4,25 +4,15 @@
   <link rel="stylesheet" href="app.css">
   <%- include('../partials/head'); %>
 </head>
-<body class="container">
+<body>
 
 <header>
-  <%- include('../partials/header'); %>
+  <%- include('../partials/headerMain', {active:"Upcoming"}); %>
 </header>
 
-<body style="background-color: #F6F7F9">
+<div class="fullbody">
+<div class="container" >
 <main>
-  <div class="myframe">
-    <div class="right-side-content">
-      <div class="logocontainer">
-          <a href='/'> <img src="logo.png" alt="Logo" class="logo"></a>
-      </div>
-      <div class="topnav">
-           <a href="/search">Search</a>
-           <a href="/billing">Billing</a>
-           <a class="active" href="/upcoming">Upcoming Trips</a>
-      </div>
-  </div>
     <h1>Edit Reservation</h1>
     <form class = "myform"  action="/edit_trip" method="post">
 		<div class="editcontainer" style="height: 500px">
@@ -73,6 +63,7 @@
 		</form>
     
   </div>
+</div>
 </main>
 </body>
 <footer>

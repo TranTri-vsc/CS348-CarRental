@@ -1,11 +1,22 @@
+html, body {height: 100%;}
 /* Bordered form */
-
 form {
   border: 3px solid #f1f1f1;
 }
 
-body{
-  background-color: #f1f1f1
+.fullbody {
+  background-color: #F6F7F9;
+  display: flex;
+  min-height: 90%;
+}
+
+.footer {
+  background-color: white;
+  position: absolute;
+  display: flexbox;
+  bottom: 0;
+  width: 100%; 
+  align-items: center;
 }
 
 /* Full-width inputs */
@@ -22,8 +33,8 @@ input[type=text], input[type=password] {
 button {
   background-color: #478CCD;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 8px 16px;
+  margin: 8px;
   border: none;
   cursor: pointer;
 }
@@ -61,13 +72,14 @@ button:hover {
 
 /* Avatar image */
 img.logo {
-  width: 40%;
+  width: 30%;
 }
 
 /* Add padding to containers */
 .container {
   overflow-y: auto;
   padding: 16px;
+  
 }
 
 .editcontainer {
@@ -107,25 +119,59 @@ span.psw {
   flex-flow: row wrap;
 }
 
-
-.topnav a {
-  float: center;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a.active {
-  text-decoration: underline;
-  color: #478CCD;
-}
-
 .logocontainer {
   text-align: left;
-  margin: 24px 0 12px 0;
+  margin-top: 12px;
 }
+
+header {
+  vertical-align: bottom;
+}
+
+nav {
+  vertical-align: bottom;
+  border-bottom: 5px solid #478CCD;
+}
+
+.nav-list {
+  list-style-position: inside;
+  background: white;
+  padding: 16px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+
+.nav-list li {
+  list-style: none;
+  display: inline-block;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.nav-list li a {
+  font-size: large;
+  text-decoration: none;
+  color:black;
+}
+
+.nav-list li:first-child {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.nav-list li a.active{
+  color: #478CCD;
+  font-weight: bold;
+  border-bottom: 2.5px solid #478CCD;
+}
+
+.nav-list li a:hover {
+  color:#478CCD
+}
+
 
 .header {
   text-align: left;
@@ -179,7 +225,7 @@ span.psw {
   color: white
 }
 
-#deleteTrip, #editTrip {
+.formnoborder {
   margin: 0;
   display: inline;
   border: none !important;

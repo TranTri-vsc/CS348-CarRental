@@ -4,12 +4,14 @@
   <link rel="stylesheet" href="app.css">
   <%- include('../partials/head'); %>
 </head>
-<body class="container" style="background-color: #f1f1f1">
+<body >
 
 <header>
   <%- include('../partials/header'); %>
 </header>
 
+<div class="fullbody">
+<div class="container" >
 <main>
   <div class="myframe">
 	<form action="/login" method="post">
@@ -27,7 +29,8 @@
 
   </div>
 </main>
-
+</div>
+</div>
 <footer>
   <%- include('../partials/footer'); %>
 </footer>
