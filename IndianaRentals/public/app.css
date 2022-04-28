@@ -208,7 +208,6 @@ nav {
 .nav-list li a.active{
   color: #478CCD;
   font-weight: bold;
-  border-bottom: 2.5px solid #478CCD;
 }
 
 .nav-list li a:hover {
