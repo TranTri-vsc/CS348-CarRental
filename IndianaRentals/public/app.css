@@ -1,8 +1,4 @@
 html, body {height: 100%;}
-/* Bordered form */
-form {
-  border: 3px solid #f1f1f1;
-}
 
 .fullbody {
   background-color: #F6F7F9;
@@ -124,9 +120,56 @@ span.psw {
   margin-top: 12px;
 }
 
-header {
-  vertical-align: bottom;
+.searchcontainer {
+  background-color: white;
+  padding: 16px;
+  display: block;
 }
+
+.searchcontainer label {
+  margin-bottom: 2px;
+}
+
+.searchcontainer select, .searchcontainer input {
+  margin: 4px;
+  margin-left: 0px;
+  width: 100%;
+}
+
+.searchcontainer hr {
+  margin: 6px -16px;
+  border-bottom: 5px solid #F6F7F9;
+}
+
+.searchcontainer button {
+  margin: 4px;
+  margin-left: 0px;
+}
+
+
+.repos {
+  vertical-align: 10px;
+  display: table;
+  justify-content: space-around;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+.repos button {
+  width: 100%;
+}
+
+.repos th {
+  color: #478CCD
+}
+
+.repos tr, td {
+  background-color: white;
+  padding: 8px;
+  text-align: center;
+}
+
 
 nav {
   vertical-align: bottom;
@@ -180,26 +223,39 @@ nav {
 }
 
 .dateForm {
-  white-space: nowrap;
   align-items: center;
-  text-align: center
+  border: 1px solid #F6F7F9;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-end;
 }
+
 
 .dateForm button {
   text-align: center;
-  padding: 10px 20px;
+  align-items: center;
+  padding: 8px 20px;
   background-color: #478CCD;;
-  border: 1px solid #ddd;
+  border: 1px solid #F6F7F9;
   color: white;
-  width: 25%;
+  margin: 2px 8px;
+  margin-right: 0px;
 }
 
 .dateForm input[type="submit"], input[type="date"] {
     display: inline-block;
+    margin: 0px 8px;
 }
 
 .billing-table {
-    vertical-align: 10px;
+  vertical-align: 10px;
+  display: table;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.billing-table th {
+  color: #478CCD
 }
 
 .billing-table tr, td {

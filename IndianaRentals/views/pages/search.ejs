@@ -12,21 +12,20 @@
 <div class="fullbody">
 <div class="container" >
 <main>
-
+	<h1>Cars</h1>
 <!--<form class="myform" action="/" method="post"> -->
 <div class="row">
   <div class="col-sm-4">
     <div class="search">
-      <h1>Cars</h1>
+      
         <form class = "" action="/Search" method="post">
 	
-		<div class="container">
+		<div class="searchcontainer">
 	
-			<input type="text" id="search" name="search" value="<%=gbl.search%>"  placeholder="Search Nearby Zipcode"   /> 
+			<input type="text" id="search" name="search" value="<%=gbl.search%>"  placeholder="Search Nearby Zipcode" style="padding: 8px 16px;"  /> 
 			<button type="submit" formaction="/Search">Search</button>
-			<br>
+			<hr>
 			<label for="Location"><b>Location</b></label> 
-			<br >
            <select name="pickup" id="pickup">
 		       <% if ( gbl.pickup == undefined ) { %>
                   <option value="-1" selected disabled hidden>Nearby Pickup Location</option>
@@ -55,15 +54,14 @@
 		       <% })%>
             </select>	  
 
-            <br />
-			<label for="Pickup"><b>Duration</b></label> 
-			<br />
+            <hr>
+			<label for="Pickup"><b>Duration</b></label>
 		    <input name="pickuptime" id="pickuptime" value="<%-gbl.pickuptime%>" type="datetime-local"  /> 
 			<br />
+			<caption> to </caption>
 		    <input name="dropofftime" id="dropofftime" value = "<%-gbl.dropofftime%>" type="datetime-local"  /> 
-            <br />
+            <hr>
 			<label for="Filter"><b>Filter</b></label> 
-			<br />
            <select name="cartype" id="cartype">
 		       <% if ( gbl.cartype == undefined ) { %>
                   <option value="-1" selected disabled hidden>Select car type</option>
@@ -93,7 +91,6 @@
 		       <% })%>
             </select>	  
         </div>
-		<button class="cancelbtn" type="submit" formaction="\logout">Logout</button>
 
     </form>	
 
@@ -110,13 +107,15 @@
 	    <input id="pickuptime_" name="pickuptime_" type="hidden" />
 	    <input id="dropoff_" name="dropoff_" type="hidden" />
 	    <input id="dropofftime_" name="dropofftime_" type="hidden" />
-	    <table classs='repos'>
+	    <table class='repos'>
+			<% if(results.length > 0) { %>
 		  <tr>
 		    <th>Car Description</th>
 		    <th>Color</th>
 		    <th>Price per hour</th>
 			<th>Reserve</th>
 		  </tr>
+		  <% }%>
 		  <%var x = 1%>
 		  <% results.forEach(function(result) { %>
 		    <tr>
@@ -128,6 +127,11 @@
 		  <% })%>
 		</table>	
 	  </form>
+	  <% if ( gbl.status != undefined ) {%>
+		<div style="margin: 16px; text-align:center">
+		  <h5 style="text-align: center;"> <%=gbl.status%> </h5>
+		</div>
+		<%}%>
 	  <script>
 	    function clicked() {
 		   
@@ -139,11 +143,7 @@
 		</script>
     </div>
   </div>
-		<% if ( gbl.status != undefined ) {%>
-		<div class="status">
-		  <h2 style="text-align: center;"><%=gbl.status%></h2>
-		</div>
-		<%}%>
+		
 
 </div>
 <!--<form> -->

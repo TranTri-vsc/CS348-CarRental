@@ -14,16 +14,14 @@
 <div class="container" >
 <main>
   <div class="myframe">
-        <div class="right-side-content">
             <div class ="header">
                 <h1>Billing</h1>
             </div>
             <form class = "dateForm" action="/filterByDate" method="post">
-                 Start Date: <input name="startDate" type="date" />  to
+                 Start Date: <input name="startDate" type="date" />   to
                  End Date : <input name="endDate" type="date" />
                  <button type="submit">Filter Billing</button>
             </form>
-        </div>
         <table class="billing-table">
           <tr>
             <th>ID</th>
@@ -33,6 +31,11 @@
             <th>Dropoff Date/Time</th>
             <th>Rental Cost</th>
           </tr>
+          <% if (reservations.length==0) { %>
+            <tr >
+              <td colspan="100%">No record found.</td>
+            </tr>
+          <% } %>
           <% for(var i=0; i < reservations.length; i++) {%>
 
           <tr>
