@@ -1,7 +1,6 @@
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_billing_filtered`( IN Customer_id int, IN startDate DATE, IN endDate DATE )
 BEGIN
-DECLARE pickup DATE;
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 SELECT r.Reservation_id as res_id, pickup.location_description AS pickup_loc, 
 	r.PickUpdatetime AS pickup_dt, dropoff.location_description AS dropoff_loc, 
