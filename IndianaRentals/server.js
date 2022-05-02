@@ -572,7 +572,7 @@ async function getBilling() {
 
 async function getFilteredBilling(startDate, endDate) {
     var reservations;
-    if (startDate == '' && endDate == '') {
+    if (startDate == '' || endDate == '') {
         reservations = await billing();
     } else {
         reservations = await filteredBilling(startDate, endDate);
