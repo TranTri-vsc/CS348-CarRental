@@ -13,6 +13,9 @@
          <a <%if(active=="Upcoming"){%>class="active"<%}%> href="/upcoming">Upcoming Trips</a>
     </li>
     <li>
+      <a <%if(active=="Account"){%>class="active"<%}%> href="/account">Account</a>
+ </li>
+    <li>
       <form class="formnoborder"  method="post">
         <button type="submit" formaction="/logout">Logout</button>
       </form>

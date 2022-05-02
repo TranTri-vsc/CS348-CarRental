@@ -572,7 +572,7 @@ async function getBilling() {
 
 async function getFilteredBilling(startDate, endDate) {
     var reservations;
-    if (startDate == '' && endDate == '') {
+    if (startDate == '' || endDate == '') {
         reservations = await billing();
     } else {
         reservations = await filteredBilling(startDate, endDate);
@@ -717,6 +717,31 @@ async function editReservation(reservation_id, new_pickup_date, new_dropoff_loca
 
 }
 
+///***************USER ACCOUNT PAGE by Tri***********************
+
+app.get('/account', function(req, res) {
+	const user_info = getUserData().then( user_info =>
+      {
+		res.render('pages/account', { user_info : user_info[0]}); } );
+	}
+);
+
+user_dat = (user_id) => {
+    return new Promise((resolve, reject)=>{
+        con.query("CALL user_call(?)", [user_id], (error, elements)=>{
+            if(error) {
+                return reject(error);
+            }
+		//console.log(elements); // debug
+            return resolve(elements);
+        });
+    });
+};
+
+async function getUserData() {
+    const user_info = await user_dat(gbl.customer);
+    return user_info[0];
+}
 
 /* Server connection */
 
